@@ -1,36 +1,35 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import ContactList from './ContactList'
+import ContactDetails from './contactDetails'
 
 class ContactApp extends Component {
-  constructor(props){
+  constructor (props){
     super(props)
-    this.state={conatct:[]}
+    this.state={contacts:[], userSelectedContact:{}}  
+  }
+  userSelectedContact = (contact)=>{
+    this.setState({selectedContact: contact })
   }
   componentDidMount(){
     let url ='https://gist.githubusercontent.com/narasimhareddyprostack/7e344f346f47bc53a889d78b5258d0c9/raw/56d531cb936d9c79e2417e5d0e5d8c9c876800f2/contactlist'
     Axios.get(url)
     .then((response)=>{
-        this.setState({conatct: response.data})
+        this.setState({contacts: response.data})
     })
-    .catch(()=>{})
-  }
-
-  
-  
-  
-  
+    .catch()
+  }  
   render() {
     return <div className="contanier">
             <div className="row">
             <div className="col-md-8">    
                 {
-                  this.state.conatct.length>0 ? <>< ContactList conatct={this.state.conatct} /></> : null
+                  this.state.contacts.length>0 ? <>< ContactList contacts={this.state.contacts} /></> : null
                 }
             </div>
             <div className="col-md-4">
               {
-                
+                Object.keys(this.state.selectedContact).length>0 ? <> <ContactDetails selectedContact={this.state.selectedContact} /> </> : null
               }
             </div>
         </div>

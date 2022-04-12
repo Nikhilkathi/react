@@ -1,8 +1,8 @@
 import React from "react";
 class ContactList extends React.Component{
     render(){
-        return <div>
-            <div className="container mt-5">
+        let { contacts }= this.props
+        return (<div className="container mt-5">
                 <div className="row">
                     <div className="col">
                         <h1>Contact List</h1>
@@ -16,12 +16,15 @@ class ContactList extends React.Component{
                                 </tr>
                             </thead>
                             <tbody>
+                                {
+                                    contacts.map()
+                                }
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>
+        )
     }
 }
 export default ContactList
