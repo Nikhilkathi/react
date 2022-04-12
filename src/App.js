@@ -1,10 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar/navbar'
-import contactApp from './ContactApp/contactApp'
+import ContactApp from './ContactApp/ContactApp'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 const App = ()=>{
-  return <div>
+  return <Router>
     <Navbar/>
-    <contactApp/>
-  </div>
+    <Switch>
+      <Route path="/contact" component={ContactApp}/>
+    </Switch>
+    </Router>
 }
 export default App
