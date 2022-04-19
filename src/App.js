@@ -6,7 +6,7 @@ const App = ()=>{
   return (<Router>
       <Switch>
         <Navbar/>
-        <Route path="/contact" component={ContactApp}/>
+        <Route path="/contact" component={<ContactApp/>}/>
       </Switch>
     </Router>)
 }
